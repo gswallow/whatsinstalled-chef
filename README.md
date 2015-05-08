@@ -8,7 +8,7 @@ The agent recipe installs the Whichsapp agent and configures it to look for your
 
 To configure the agent, pass in some attributes:
 
-...
+```
 default_attributes(
   'whichsapp' => {
     'apps' => {
@@ -25,4 +25,4 @@ default_attributes(
     ]
   }
 )
-...
+```
