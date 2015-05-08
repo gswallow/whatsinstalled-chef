@@ -1,0 +1,20 @@
+settings:
+  info_server: <%= @etcd_server %>
+  port: <%= @node['whichsapp']['port'] %>
+  check_interval: <%= node['whichsapp']['check_interval'] %>
+  ttl: <%= node['whichsapp']['ttl'] %>
+<% unless @apps.nil? %>
+apps:
+  <% @apps.each do |app, path| -%>
+  <%= app %>: <%= path %>
+  <% end %>
+<% end %>
+<% if @assays %>
+assays: <%= @assays %>
+<% end %>
+<% unless @packages.nil? %>
+packages:
+<% @packages.each do |package| -%>
+  - <%= package %>
+<% end %>
+<% end %>

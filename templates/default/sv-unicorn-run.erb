@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd <%= @options[:app].path %>/current
+
+exec 2>&1
+exec <%= node[:runit][:chpst_bin] %> \
+  -u <%= @options[:app].owner %>:<%= @options[:app].group %> \
+  <%= @options[:bundler] ? 'bundle exec' : '' %> \
+  unicorn <%= Pathname.new(@options[:pid]).parent %> \
+  <%= @options[:smells_like_rack] ? 'unicorn' : 'unicorn_rails' %> \
+  -c /etc/unicorn/<%= @options[:app].application.name %>.rb
