@@ -1,8 +1,8 @@
-name             "whichsapp"
+name             "whatsinstalled"
 maintainer       "Greg Swallow"
 maintainer_email "gswallow@indigobio.com"
-description      "Simple cookbook for managing deployment of whichsapp"
-version          "0.0.1"
+description      "Simple cookbook for managing deployment of whatsinstalled"
+version          "0.1.0"
 
 depends "application"
 depends "application_ruby"

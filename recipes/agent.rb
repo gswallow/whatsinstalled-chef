@@ -1,16 +1,16 @@
-whichsapp_server = search("node", "role:whichsapp AND chef_environment:#{node.chef_environment}").first
+whatsinstalled_server = search("node", "role:whatsinstalled AND chef_environment:#{node.chef_environment}").first
 
 gem_package 'bundler'
 
-directory '/opt/whichsapp' do
+directory '/opt/whatsinstalled' do
   owner 'nobody'
   group 'nogroup'
   mode '0755'
   action :create
 end
 
-git '/opt/whichsapp' do
-  repository 'https://github.com/gswallow/whichsapp.git'
+git '/opt/whatsinstalled' do
+  repository 'https://github.com/gswallow/whatsinstalled.git'
   revision 'master'
   action :export
   remote 'origin'
@@ -21,33 +21,33 @@ end
 
 execute 'bundle install' do
   command 'bundle install --deployment'
-  cwd '/opt/whichsapp'
+  cwd '/opt/whatsinstalled'
   user 'nobody'
   group 'nogroup'
   action :run
 end
 
-template '/opt/whichsapp/config.yml' do
+template '/opt/whatsinstalled/config.yml' do
   owner 'nobody'
   group 'nogroup'
   mode '0644'
   variables(
-    :etcd_server => whichsapp_server['ipaddress'],
-    :apps => node['whichsapp']['apps'],
-    :packages => node['whichsapp']['packages'],
-    :assays => node['whichsapp']['assays']
+    :etcd_server => whatsinstalled_server['ipaddress'],
+    :apps => node['whatsinstalled']['apps'],
+    :packages => node['whatsinstalled']['packages'],
+    :assays => node['whatsinstalled']['assays']
   )
   action :create
 end
 
-cookbook_file '/etc/init.d/whichsapp_agent' do
-  source 'whichsapp_agent'
+cookbook_file '/etc/init.d/whatsinstalled_agent' do
+  source 'whatsinstalled_agent'
   mode '0755'
   owner 'root'
   group 'root'
   action :create
 end
 
-service 'whichsapp_agent' do
+service 'whatsinstalled_agent' do
   action [ :enable, :restart ]
 end

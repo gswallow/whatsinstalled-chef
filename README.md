@@ -1,16 +1,16 @@
-# Whichsapp-Chef
+# Whatsinstalled-Chef
 
 ## Recipes
 
-The deploy recipe installs the Whichsapp sinatra application and a single instance of etcd.
+The 'deploy' recipe installs the Whatsinstalled sinatra application and a single instance of etcd.
 
-The agent recipe installs the Whichsapp agent and configures it to look for your apps' versions.
+The 'agent' recipe installs the Whatsinstalled agent and configures it to look for your apps' versions.
 
 To configure the agent, pass in some attributes:
 
 ```
 default_attributes(
-  'whichsapp' => {
+  'whatsinstalled' => {
     'apps' => {
       'web' => '/var/www/apps/ascent-web/current',
       'compute_runner' => '/var/scripts/compute-runner/current'

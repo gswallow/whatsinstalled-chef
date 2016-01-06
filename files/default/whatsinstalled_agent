@@ -1,7 +1,7 @@
 #! /bin/sh
 
 ### BEGIN INIT INFO
-# Provides:          whichsapp_agent
+# Provides:          whatsinstalled_agent
 # Required-Start:    $local_fs
 # Required-Stop:     $local_fs
 # Default-Start:     2 3 4 5
@@ -13,17 +13,17 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 
 case "$1" in
   start)
-    cd /opt/whichsapp
-    bundle exec ruby whichsapp_agent.rb start
+    cd /opt/whatsinstalled
+    bundle exec ruby whatsinstalled_agent.rb start
 	;;
   restart)
-    cd /opt/whichsapp
-    bundle exec ruby whichsapp_agent.rb stop
-    bundle exec ruby whichsapp_agent.rb start
+    cd /opt/whatsinstalled
+    bundle exec ruby whatsinstalled_agent.rb stop
+    bundle exec ruby whatsinstalled_agent.rb start
     ;;
   stop)
-    cd /opt/whichsapp
-    bundle exec ruby whichsapp_agent.rb stop
+    cd /opt/whatsinstalled
+    bundle exec ruby whatsinstalled_agent.rb stop
 	;;
   *)
     ;;

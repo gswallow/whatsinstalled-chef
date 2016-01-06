@@ -2,7 +2,7 @@ include_recipe 'etcd'
 
 # Satisfy runit dependency
 include_recipe 'runit'
-name = 'whichsapp'
+name = 'whatsinstalled'
 
 gem_package 'bundler'
 
@@ -11,7 +11,7 @@ application name do
   path "/var/www/apps/#{name}"
   owner 'nobody'
   group 'nogroup'
-  repository 'https://github.com/gswallow/whichsapp.git'
+  repository 'https://github.com/gswallow/whatsinstalled.git'
   revision 'master'
   migrate false  #This is false because migrations are something that should be controlled and not ran on every machine automatically.
   keep_releases 2
@@ -34,9 +34,9 @@ application name do
       mode '0644'
       variables(
         :etcd_server => node['ipaddress'],
-        :apps => node['whichsapp']['apps'],
-        :packages => node['whichsapp']['packages'],
-        :assays => node['whichsapp']['assays']
+        :apps => node['whatsinstalled']['apps'],
+        :packages => node['whatsinstalled']['packages'],
+        :assays => node['whatsinstalled']['assays']
       )
     end
 

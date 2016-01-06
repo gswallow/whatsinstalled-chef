@@ -1,8 +1,8 @@
 settings:
   info_server: <%= @etcd_server %>
-  port: <%= @node['whichsapp']['port'] %>
-  check_interval: <%= node['whichsapp']['check_interval'] %>
-  ttl: <%= node['whichsapp']['ttl'] %>
+  port: <%= @node['whatsinstalled']['port'] %>
+  check_interval: <%= node['whatsinstalled']['check_interval'] %>
+  ttl: <%= node['whatsinstalled']['ttl'] %>
 <% unless @apps.nil? %>
 apps:
   <% @apps.each do |app, path| -%>
